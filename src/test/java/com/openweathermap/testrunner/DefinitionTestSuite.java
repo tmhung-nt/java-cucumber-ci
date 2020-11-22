@@ -14,14 +14,13 @@ import org.junit.BeforeClass;
         plugin = {"pretty", "json:target/surefire-reports/cucumber.json"},
         strict = true
 )
-public class DefinitionTestSuite extends BaseClass {
+public class DefinitionTestSuite {
     @BeforeClass
     public static void beforeSuite() {
     }
 
     @AfterClass
     public static void afterSuite() {
-        driver.close();
     }
 
 }
