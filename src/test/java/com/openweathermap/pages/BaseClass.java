@@ -1,5 +1,6 @@
 package com.openweathermap.pages;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,6 +21,7 @@ public class BaseClass {
     private String url;
     public Properties prop = new Properties();
 
+
     public BaseClass() {
         try {
             loadProperties();
@@ -28,12 +30,13 @@ public class BaseClass {
         }
 
         String browser = prop.getProperty("browser");
-        System.setProperty("webdriver.gecko.driver", "./src/test/resources/drivers/geckodriver.exe");
-        System.setProperty("webdriver.chrome.driver", "./src/test/resources/drivers/chromedriver.exe");
+
         if (browser.equals("chrome")) {
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
         if (browser.equals("firefox")) {
+            WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         }
         driver.manage().window().maximize();
