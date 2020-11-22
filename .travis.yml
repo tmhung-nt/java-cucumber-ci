@@ -44,6 +44,7 @@ branches :
   only :
     - master
     - dev
+    - feature/*
 
 #after_success:
 after_script:
